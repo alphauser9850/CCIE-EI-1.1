@@ -1,0 +1,21 @@
+name: csrlab1
+
+topology:
+  nodes:
+
+    csr1:
+     kind: cisco_csr1000v
+     image: vrnetlab/vr-csr:16.06.07
+     startup-config: csr1_startup.txt
+ 
+    csr2:
+     kind: cisco_csr1000v
+     image: vrnetlab/vr-csr:16.06.07
+     startup-config: csr2_startup.txt
+    
+  links:
+    - endpoints: ["csr1:eth2","csr2:eth2"]
+    - endpoints: ["csr1:eth3","csr2:eth3"]
+
+
+   

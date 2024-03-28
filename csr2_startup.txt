@@ -1,0 +1,27 @@
+
+conf t
+
+interface GigabitEthernet2 
+ip add 192.168.1.2 255.255.255.0
+no shut 
+negotiation auto
+no mop enableds
+no mop sysid
+
+interface GigabitEthernet3
+ip add 192.168.2.2 255.255.255.0
+no shut 
+negotiation auto
+no mop enabled
+no mop sysid
+
+
+interface loopback0 
+ip add 2.2.2.2 255.255.255.255
+no shut 
+
+router ospf 1
+router-id 2.2.2.2
+network 0.0.0.0 0.0.0.0 area 0
+
+
