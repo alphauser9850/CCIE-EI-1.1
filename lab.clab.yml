@@ -1,0 +1,19 @@
+topology:
+
+  nodes:
+    r201:
+      kind: cisco_csr1000v
+      startup-config: myconfig.txt
+    
+    r202:
+      kind: cisco_csr1000v
+      startup-config: myconfig.txt
+    
+    r211:
+      kind: cisco_csr1000v
+      startup-config: myconfig.txt
+    
+    r212:
+      kind: cisco_csr1000v
+      startup-config: myconfig.tx
+
