@@ -11,7 +11,11 @@ all:
         ansible_user: admin
         ansible_password: admin
       hosts:
-        clab-csrlab1-csr1:
+        clab-csrlab1-R201:
           ansible_host: 172.20.20.3
-        clab-csrlab1-csr2:
+        clab-csrlab1-R202:
+          ansible_host: 172.20.20.5
+        clab-csrlab1-R211:
           ansible_host: 172.20.20.2
+        clab-csrlab1-R212:
+          ansible_host: 172.20.20.4

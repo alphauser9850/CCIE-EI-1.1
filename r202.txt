@@ -1,0 +1,59 @@
+conf t
+
+hostname sw202
+
+interface Loopback0
+ ip address 10.2.255.202 255.255.255.255
+ ip ospf 1 area 0
+       
+interface GigabitEthernet2
+ ip address 10.2.109.2 255.255.255.252
+ ip ospf 1 area 0
+ negotiation auto
+!                  
+interface GigabitEthernet3
+ ip address 10.2.21.1 255.255.255.252
+ ip ospf 1 area 0
+
+ !
+ interface GigabitEthernet4
+ ip address 10.2.22.1 255.255.255.252
+ ip ospf 1 area 0
+
+
+
+
+router ospf 1
+!         
+ip forward-protocol nd
+!         
+ip http server
+ip http secure-server
+!         
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!         
+!         
+!         
+!         
+!         
+!         
+control-plane
+         
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+line vty 0 4
+ privilege level 15
+ no login 
+ transport input all
+line vty 5 15
+ privilege level 15
+ no login 
+ transport input all
+!         
+!         
+end       
+          
