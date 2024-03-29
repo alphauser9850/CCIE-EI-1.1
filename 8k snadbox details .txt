@@ -1,0 +1,11 @@
+Developers and network engineers access the IOS XE on Catalyst 17.12.02 sandbox directly using the following information:
+
+Cat8000v Host:
+Public URL: devnetsandboxiosxe.cisco.com
+Username: admin
+Password: C1sco12345
+RESTCONF port: 443
+NETCONF port: 830
+gRPC telemetry port: 57500
+ssh port: 22
+Example Connection: ssh admin@devnetsandboxiosxe.cisco.com
