@@ -1,0 +1,68 @@
+Check VMware PowerCLI Installation:
+
+Ensure that you have VMware PowerCLI installed on your system. If not, download and install it from the VMware website1.
+
+Make sure you’re using an elevated PowerShell session (Run as Administrator).
+
+Verify Module Path:
+Sometimes the module path is not automatically added to the PowerShell environment.
+
+Run the following command to check if the module path is included:
+$env:PSModulePath
+
+If the path to the PowerCLI module directory is missing, you’ll need to add it manually.
+
+Manually Add Module Path:
+Locate the directory where VMware PowerCLI is installed. By default, it’s usually in C:\Program Files\VMware\Infrastructure\PowerCLI\Modules.
+
+Add this path to your PowerShell module path:
+$env:PSModulePath += ";C:\Program Files\VMware\Infrastructure\PowerCLI\Modules"
+
+Try Importing Again:
+Now try importing the module:
+Import-Module VMware.PowerCLI
+
+Verify Successful Import:
+If successful, you should be able to use PowerCLI cmdlets without errors.
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Enable Script Execution:
+
+Enable Script Execution:
+By default, PowerShell restricts script execution for security reasons. You need to change the execution policy to allow running scripts.
+Open a PowerShell window as an administrator (Run as Administrator).
+Check Current Execution Policy:
+Run the following command to check the current execution policy:
+
+Get-ExecutionPolicy
+
+Set Execution Policy:
+Choose an appropriate execution policy based on your security requirements:
+To allow all scripts to run, use:
+
+Set-ExecutionPolicy Unrestricted
+
+To allow only signed scripts to run, use:
+
+Set-ExecutionPolicy RemoteSigned
+
+Confirm the Change:
+Confirm the change by typing Y and pressing Enter.
+
+
+
+
+It looks like you’re encountering a common issue with the Connect-VIServer cmdlet where it refuses to connect due to an invalid server certificate. This can happen if the certificate is self-signed or not trusted by your system.
+
+To resolve this, you can set the InvalidCertificateAction option to Ignore or Warn using the Set-PowerCLIConfiguration cmdlet. This will allow you to bypass the certificate check and connect to the server. Here’s how you can do it:
+
+
+
+# To ignore the invalid certificate warning
+Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -Confirm:$false
+
+# Then try connecting again
+Connect-VIServer -Server $Server -User $User -Password $Password
